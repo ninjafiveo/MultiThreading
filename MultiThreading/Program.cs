@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MultiThreading
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create two new Thread Objects
+            Thread thread1 = new Thread(Method1);
+            Thread thread2 = new Thread(Method2);
+
+            // start both threads
+            thread1.Start();
+            thread2.Start();
+
+        }
+        static void Method1()
+        {
+            int number1 = 0;
+            while (true)
+            {
+                Console.WriteLine(number1);
+                number1 = number1 + 1;
+                Thread.Sleep(500);
+            }
+        }
+        static void Method2()
+        {
+            int number2 = 0;
+            while (true)
+            {
+                Console.WriteLine(number2);
+                number2 = number2 + 100;
+                Thread.Sleep(3000);
+            }
+        }
+
+        static void Method3()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Method 3: {i}");
+                Thread.Sleep(1000); //Simutlate some work with a 1 second delay.
+            }
+        }
+        static void Method4()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"Method 4: {i}");
+                Thread.Sleep(500); //Simutlate some work with a .5 second delay.
+            }
+        }
+
+
+
+    }
+}
