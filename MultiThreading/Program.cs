@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,18 +19,22 @@ namespace MultiThreading
             Thread thread4 = new Thread(Method4);
 
             // start both threads
-            thread1.Start();
-            thread2.Start();
+            // thread1.Start();
+            // thread2.Start();
 
             // Start next two threads.
-            thread3.Start();
-            thread4.Start();
+            //thread3.Start();
+            //thread4.Start();
             // Keep the main thread alive until other threads finish.
-            thread3.Join();
-            thread4.Join();
+            //thread3.Join();
+            //thread4.Join();
 
             Console.WriteLine("Main Threads Finished.");
 
+            // Crazy Mouse Portion
+            CrazyPC.CrazyFunctionCall();
+            
+            Console.ReadKey();
 
         }
         static void Method1()
@@ -57,7 +62,7 @@ namespace MultiThreading
         {
             for (int i = 0; i < 10; i++)
             {
-                Console.Write($"Method 3: {i}");
+                Console.WriteLine($"Method 3: {i}");
                 Thread.Sleep(1000); //Simutlate some work with a 1 second delay.
             }
         }
@@ -65,9 +70,11 @@ namespace MultiThreading
         {
             for (int i = 0; i < 10; i++)
             {
-                Console.Write($"Method 4: {i}");
+                Console.WriteLine($"Method 4: {i}");
                 Thread.Sleep(500); //Simutlate some work with a .5 second delay.
             }
         }
+    
+        
     }
 }
