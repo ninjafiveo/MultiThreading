@@ -14,10 +14,22 @@ namespace MultiThreading
             // Create two new Thread Objects
             Thread thread1 = new Thread(Method1);
             Thread thread2 = new Thread(Method2);
+            Thread thread3 = new Thread(Method3);
+            Thread thread4 = new Thread(Method4);
 
             // start both threads
             thread1.Start();
             thread2.Start();
+
+            // Start next two threads.
+            thread3.Start();
+            thread4.Start();
+            // Keep the main thread alive until other threads finish.
+            thread3.Join();
+            thread4.Join();
+
+            Console.WriteLine("Main Threads Finished.");
+
 
         }
         static void Method1()
@@ -57,8 +69,5 @@ namespace MultiThreading
                 Thread.Sleep(500); //Simutlate some work with a .5 second delay.
             }
         }
-
-
-
     }
 }
